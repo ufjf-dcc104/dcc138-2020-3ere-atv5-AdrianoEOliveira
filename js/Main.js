@@ -8,6 +8,7 @@ const en1 = new Sprite({x:140,y:100,w:10,h:10,color:"red"});
 cena1.adicionarSprite(pc);
 cena1.adicionarSprite(en1);
 
+cena1.passo(0.16);
 cena1.desenhar();
 
 
