@@ -6,6 +6,7 @@ export default class Cena
         this.canvas = canvas;
         this.ctx = canvas.getContext("2d");
         this.sprites=[];
+        this.aRemover=[];
         this.t0=0;
         this.dt=0;
         this.idAnim = null;
@@ -61,9 +62,21 @@ export default class Cena
                 const sprB = this.sprites[j];
                 if(sprA.colidiuCom(sprB))
                 {
-                    console.log(sprA,sprB)
+                    this.quandoColidir(sprA,sprB)
                 }               
             }
         }
+    }
+    quandoColidir(a,b)
+    {
+        if(!this.aRemover.includes(a))
+        {
+            this.aRemover.push(a);
+        }
+        if(!this.aRemover.includes(b))
+        {
+            this.aRemover.push(b);
+        }
+
     }
 }
