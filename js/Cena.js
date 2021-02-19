@@ -40,6 +40,7 @@ export default class Cena
         this.passo(this.dt);
         this.desenhar();
         this.checarColisão();
+        this.removerSprites();
         this.t0 = t;
         this.iniciar();
     }
@@ -78,5 +79,16 @@ export default class Cena
             this.aRemover.push(b);
         }
 
+    }
+    removerSprites()
+    {
+        for (let i = 0; i < this.aRemover.length; i++) {
+            const alvo = this.aRemover[i];
+            const idx = this.sprites.indexOf(alvo);
+            if(idx >=0)
+            {
+                this.sprites.splice(idx,1);
+            }
+        }
     }
 }
