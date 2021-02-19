@@ -38,7 +38,7 @@ export default class Cena
 
         this.passo(this.dt);
         this.desenhar();
-
+        this.checarColisão();
         this.t0 = t;
         this.iniciar();
     }
@@ -50,5 +50,20 @@ export default class Cena
         cancelAnimationFrame(this.idAnim);
         this.t0=null;
         this.dy=0;
+    }
+    checarColisão()
+    {
+        for (let i = 0; i < this.sprites.length - 1; i++) 
+        {
+            const sprA = this.sprites[i];
+            for (let j = i+1; j < this.sprites.length; j++)
+            {
+                const sprB = this.sprites[j];
+                if(sprA.colidiuCom(sprB))
+                {
+                    console.log(sprA,sprB)
+                }               
+            }
+        }
     }
 }
