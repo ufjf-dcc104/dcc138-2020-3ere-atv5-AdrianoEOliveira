@@ -3,11 +3,10 @@ import Cena from"./Cena.js"
 import Mixer from "./mixer.js";
 import Sprite from "./Sprite.js";
 
-const assets= new AssetManager();
+const assets= new AssetManager(new Mixer(10));
 assets.adicionaImagem("humano","assets/humano.png");
 assets.adicionaAudio("boom","assets/boom.wav")
 
-const mixer= new Mixer(10)
 
 const canvas = document.querySelector("canvas");
 const cena1= new Cena(canvas,assets);
@@ -28,7 +27,7 @@ document.addEventListener("keydown",(e)=>{switch (e.key)
             cena1.parar()
             break;
             case "c":
-            mixer.play(assets.audio("boom"));
+            assets.play("boom");
             break;
         }
     }
