@@ -23,7 +23,7 @@ export default class AssetManager{
     {
         const audio = new Audio();
         const that=this;
-        audio.addEventListener("canplay",function()
+        audio.addEventListener("loadeddata",function()
         {
             console.log(`Audio ${that.carregadas}/${that.aCarregar}carregado!`);
             that.carregadas++;
@@ -36,6 +36,10 @@ export default class AssetManager{
     Img(chave)
     {
         return this.imagens.get(chave);
+    }
+    audio(chave)
+    {
+        return this.audios.get(chave);
     }
 
     progresso(){

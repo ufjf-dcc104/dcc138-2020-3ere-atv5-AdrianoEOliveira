@@ -25,6 +25,9 @@ document.addEventListener("keydown",(e)=>{switch (e.key)
         case "S":
             cena1.parar()
             break;
+            case "c":
+            assets.audio("boom").play();
+            break;
         }
     }
 )
