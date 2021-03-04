@@ -4,8 +4,9 @@ import Sprite from "./Sprite.js";
 
 const assets= new AssetManager();
 assets.adicionaImagem("humano","assets/humano.png");
+assets.adicionaAudio("boom","assets/boom.wav")
 
-document.body.appendChild(assets.Img("humano"));
+
 const canvas = document.querySelector("canvas");
 const cena1= new Cena(canvas,assets);
 const pc = new Sprite({vx:10});
