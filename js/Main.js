@@ -1,8 +1,15 @@
+import AssetManager from "./AssetManager.js";
 import Cena from"./Cena.js"
 import Sprite from "./Sprite.js";
 
+
+const img1 = new Image();
+img1.src = "assets/humano.png";
+const assets= new AssetManager();
+
+document.body.appendChild(img1);
 const canvas = document.querySelector("canvas");
-const cena1= new Cena(canvas);
+const cena1= new Cena(canvas,assets);
 const pc = new Sprite({vx:10});
 const en1 = new Sprite({x:140,y:100,w:20,h:20,color:"red"});
 cena1.adicionarSprite(pc);
