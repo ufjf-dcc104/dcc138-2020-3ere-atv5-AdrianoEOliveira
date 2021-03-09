@@ -42,6 +42,8 @@ export default class Sprite
     {
         this.AplicaRestriçõesDireita();
         this.AplicaRestriçõesEsquerda()
+        this.AplicaRestriçõesCima();
+        this.AplicaRestriçõesBaixo();
     }
     AplicaRestriçõesDireita()
     {
@@ -81,6 +83,48 @@ export default class Sprite
                 {
                 this.vx = 0;
                 this.x=tile.x+tile.w/2+this.w/2+1;
+                }
+            }
+        }
+    }
+    AplicaRestriçõesBaixo()
+    {
+        const size = this.cena.mapa.TAMANHO;
+        if(this.vy>0)
+        {
+            const pmx = this.mx+1;
+            const pmy= this.my+1;
+            if(this.cena.mapa.tiles[pmy][pmx]!=0)
+            {
+                const tile = {x:(pmx*size)+(size/2),
+                y:(pmy*size)+(size/2),
+                w:size,
+                h:size}
+                if(this.colidiuCom(tile))
+                {
+                this.vy = 0;
+                this.y=tile.y-tile.h/2-this.h/2-1;
+                }
+            }
+        }
+    }
+    AplicaRestriçõesCima()
+    {
+        const size = this.cena.mapa.TAMANHO;
+        if(this.vy<0)
+        {
+            const pmx = this.mx;
+            const pmy= this.my-1;
+            if(this.cena.mapa.tiles[pmy][pmx]!=0)
+            {
+                const tile = {x:(pmx*size)+(size/2),
+                y:(pmy*size)+(size/2),
+                w:size,
+                h:size}
+                if(this.colidiuCom(tile))
+                {
+                this.vy = 0;
+                this.y=tile.y+tile.h/2+this.h/2+1;
                 }
             }
         }
