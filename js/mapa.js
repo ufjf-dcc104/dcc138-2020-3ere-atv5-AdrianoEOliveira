@@ -23,23 +23,38 @@ export default class Mapa
         {
             for (let c = 0; c < this.COLUNAS; c++) 
             {
-                 switch(this.tiles[l][c] = 0)
+                switch(this.tiles[l][c])
                 {
                 case 1:
-                ctx.fillStyle = "grey";
+                ctx.fillStyle = "black";
                 ctx.fillRect(c*this.TAMANHO,l*this.TAMANHO,this.TAMANHO,this.TAMANHO);
                 ctx.lineWidth = 1;
                 ctx.strokeStyle = "red";
                 ctx.strokeRect(c*this.TAMANHO,l*this.TAMANHO,this.TAMANHO,this.TAMANHO);
                 break;
                 default:
-                    ctx.fillStyle = "black";
+                    ctx.fillStyle = "Cyan";
                     ctx.fillRect(c*this.TAMANHO,l*this.TAMANHO,this.TAMANHO,this.TAMANHO);
                     ctx.lineWidth = 1;
-                    ctx.strokeStyle = "red";
+                    ctx.strokeStyle = "blue";
                     ctx.strokeRect(c*this.TAMANHO,l*this.TAMANHO,this.TAMANHO,this.TAMANHO);
                     break;
                 }
+            }
+        }
+    }
+    carregaMapa(modelo)
+    {
+        this.LINHAS= modelo.length;
+        this.COLUNAS = modelo[0]?.length??0;
+
+        this.tiles=[]
+        for (let l = 0; l < this.LINHAS; l++) 
+        {
+            this.tiles[l] = []
+            for (let c = 0; c < this.COLUNAS; c++) 
+            {
+            this.tiles[l][c] = modelo[l][c];
             }
         }
     }
