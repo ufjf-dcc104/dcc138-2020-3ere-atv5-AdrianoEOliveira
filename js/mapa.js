@@ -26,14 +26,14 @@ export default class Mapa
                 switch(this.tiles[l][c])
                 {
                 case 1:
-                ctx.fillStyle = "black";
+                ctx.fillStyle = "Grey";
                 ctx.lineWidth = 1;
                 ctx.strokeStyle = "red";
                 break;
                 default:
-                    ctx.fillStyle = "Cyan";
+                    ctx.fillStyle = "black";
                     ctx.lineWidth = 1;
-                    ctx.strokeStyle = "blue";
+                    ctx.strokeStyle = "cyan";
                    
                     break;
                 }

@@ -31,6 +31,7 @@ export default class Cena
     }
     adicionarSprite(sprite)
     {
+        sprite.cena=this;
         this.sprites.push(sprite);
     }
     passo(dt)

@@ -10,16 +10,26 @@ export default class Sprite
         this.w=w;
         this.h=h;
         this.color=color;
+        this.cena=null;
+        this.mx=0;
+        this.my=0;
     }
     desenhar(ctx)
     {
         ctx.fillStyle = this.color;
         ctx.fillRect(this.x- this.w/2,this.y-this.h/2,this.w,this.h);
+        ctx.strokeStyle = "yellow";
+        ctx.strokeRect(this.mx*this.cena.mapa.TAMANHO,
+            this.my*this.cena.mapa.TAMANHO,
+            this.cena.mapa.TAMANHO,
+            this.cena.mapa.TAMANHO);
     }
     passo(dt)
     {
         this.x = this.x + this.vx*dt;
         this.y = this.y + this.vy*dt;
+        this.mx=Math.floor(this.x/this.cena.mapa.TAMANHO);
+        this.my=Math.floor(this.y/this.cena.mapa.TAMANHO);
     }
     colidiuCom(outro)
     {
