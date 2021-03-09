@@ -40,18 +40,28 @@ export default class Sprite
     }
     AplicaRestrições()
     {
-        this.AplicaRestriçõesDireita();
-        this.AplicaRestriçõesEsquerda()
-        this.AplicaRestriçõesCima();
-        this.AplicaRestriçõesBaixo();
+        this.AplicaRestriçõesDireita(this.mx+1,this.my-1);
+        this.AplicaRestriçõesDireita(this.mx+1,this.my);
+        this.AplicaRestriçõesDireita(this.mx+1,this.my+1);
+
+        this.AplicaRestriçõesEsquerda(this.mx-1,this.my+1)
+        this.AplicaRestriçõesEsquerda(this.mx-1,this.my)
+        this.AplicaRestriçõesEsquerda(this.mx-1,this.my-1)
+
+        this.AplicaRestriçõesCima(this.mx+1,this.my+1);
+        this.AplicaRestriçõesCima(this.mx,this.my+1);
+        this.AplicaRestriçõesCima(this.mx-1,this.my+1);
+
+        this.AplicaRestriçõesBaixo(this.mx+1,this.my-1);
+        this.AplicaRestriçõesBaixo(this.mx,this.my-1);
+        this.AplicaRestriçõesBaixo(this.mx-1,this.my-1);
     }
-    AplicaRestriçõesDireita()
+    AplicaRestriçõesDireita(pmx,pmy)
     {
         const size = this.cena.mapa.TAMANHO;
         if(this.vx>0)
         {
-            const pmx = this.mx+1;
-            const pmy= this.my;
+
             if(this.cena.mapa.tiles[pmy][pmx]!=0)
             {
                 const tile = {x:(pmx*size)+(size/2),
@@ -66,13 +76,12 @@ export default class Sprite
             }
         }
     }
-    AplicaRestriçõesEsquerda()
+    AplicaRestriçõesEsquerda(pmx,pmy)
     {
         const size = this.cena.mapa.TAMANHO;
         if(this.vx<0)
         {
-            const pmx = this.mx-1;
-            const pmy= this.my;
+
             if(this.cena.mapa.tiles[pmy][pmx]!=0)
             {
                 const tile = {x:(pmx*size)+(size/2),
@@ -87,13 +96,12 @@ export default class Sprite
             }
         }
     }
-    AplicaRestriçõesBaixo()
+    AplicaRestriçõesBaixo(pmx,pmy)
     {
         const size = this.cena.mapa.TAMANHO;
         if(this.vy>0)
         {
-            const pmx = this.mx+1;
-            const pmy= this.my+1;
+
             if(this.cena.mapa.tiles[pmy][pmx]!=0)
             {
                 const tile = {x:(pmx*size)+(size/2),
@@ -108,13 +116,12 @@ export default class Sprite
             }
         }
     }
-    AplicaRestriçõesCima()
+    AplicaRestriçõesCima(pmx,pmy)
     {
         const size = this.cena.mapa.TAMANHO;
         if(this.vy<0)
         {
-            const pmx = this.mx;
-            const pmy= this.my-1;
+
             if(this.cena.mapa.tiles[pmy][pmx]!=0)
             {
                 const tile = {x:(pmx*size)+(size/2),
