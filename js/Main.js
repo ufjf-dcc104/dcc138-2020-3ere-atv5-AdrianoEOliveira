@@ -15,7 +15,7 @@ canvas.width = 20*32;
 canvas.height = 10*32;
 
 const cena1= new Cena(canvas,assets);
-const pc = new Sprite({vx:10});
+const pc = new Sprite({vx:10,y:180,x:50});
 
 const mapa1 = new Mapa(10,14,32);
 mapa1.carregaMapa(modeloMapa1);

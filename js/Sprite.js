@@ -38,4 +38,25 @@ export default class Sprite
             ||(this.y-this.h/2>outro.y+outro.h/2)
             ||(this.y+this.h/2<outro.y-outro.h/2))
     }
+    AplicaRestrições()
+    {
+        const size = this.cena.mapa.TAMANHO;
+        if(this.vx>0)
+        {
+            const pmx = this.mx+1;
+            const pmy= this.my;
+            if(this.cena.mapa.tiles[pmy][pmx]!=0)
+            {
+                const tile = {x:(pmx*size)+(size/2),
+                y:(pmy*size)+(size/2),
+                w:size,
+                h:size}
+                if(this.colidiuCom(tile))
+                {
+                this.vx = 0;
+                this.x=tile.x-tile.w/2-this.w/2-1;
+                }
+            }
+        }
+    }
 }
