@@ -120,6 +120,7 @@ export default class Cena
                 if(sprA.colidiuCom(sprB))
                 {
                     this.quandoColidir(sprA,sprB)
+                    this.assets.play("boom");
                 }               
             }
         }
