@@ -1,3 +1,5 @@
+import Sprite from "./Sprite.js";
+
 export default class Cena
 {
     /* E responsável por desenhar elementos na tela de uma animação
@@ -12,6 +14,7 @@ export default class Cena
         this.idAnim = null;
         this.assets= assets;
         this.mapa=null;
+        this.tempo =0;
     }
     desenhar()
     {
@@ -45,12 +48,51 @@ export default class Cena
             }
         }
     }
+    MudaEstado()
+    {
+        for (const sprite of this.sprites) 
+        {
+            sprite.reposicionar();
+        }
+        this.criaSprite();
+    }
+    criaSprite()
+    {
+        let Invalido = 1;
+        let xa ,ya;
+            while(Invalido ==1)
+            {
+            xa = Math.floor(Math.random() * 12*32) + 32;
+            let mx=Math.floor(xa/this.mapa.TAMANHO);
+            ya = Math.floor(Math.random() * 7*32) + 32;
+            let my=Math.floor(ya/this.mapa.TAMANHO);
+                if(this.mapa.tiles[my][mx]!=1)
+                {
+                    Invalido = 0;
+                }
+            }
+        let vxa = Math.floor(Math.random() * 11);
+        let positivoOuNegativo =Math.floor(Math.random() * 10) +1;
+        vxa = vxa * Math.pow(-1,positivoOuNegativo);
+        let vya = Math.floor(Math.random() * 11);
+        positivoOuNegativo =Math.floor(Math.random() * 10) +1;
+        vya = vya * Math.pow(-1,positivoOuNegativo);
+        const en1 = new Sprite({x:xa,y:ya,w:20,h:20,vx:vxa,vy:vya,color:"red"});
+        this.adicionarSprite(en1);
+
+    }
+
 
     quadro(t)
     {
         this.t0 = this.t0 ?? t;
         this.dt = (t-this.t0)/1000;
-
+        this.tempo = this.dt +this.tempo;
+        if(this.tempo > 4)
+        {
+            this.MudaEstado();
+            this.tempo=0;
+        }
         this.passo(this.dt);
         this.desenhar();
         this.checarColisão();

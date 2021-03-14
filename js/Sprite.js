@@ -48,13 +48,13 @@ export default class Sprite
         this.AplicaRestriçõesEsquerda(this.mx-1,this.my)
         this.AplicaRestriçõesEsquerda(this.mx-1,this.my-1)
 
-        this.AplicaRestriçõesCima(this.mx+1,this.my+1);
-        this.AplicaRestriçõesCima(this.mx,this.my+1);
-        this.AplicaRestriçõesCima(this.mx-1,this.my+1);
+        this.AplicaRestriçõesBaixo(this.mx+1,this.my+1);
+        this.AplicaRestriçõesBaixo(this.mx,this.my+1);
+        this.AplicaRestriçõesBaixo(this.mx-1,this.my+1);
 
-        this.AplicaRestriçõesBaixo(this.mx+1,this.my-1);
-        this.AplicaRestriçõesBaixo(this.mx,this.my-1);
-        this.AplicaRestriçõesBaixo(this.mx-1,this.my-1);
+        this.AplicaRestriçõesCima(this.mx+1,this.my-1);
+        this.AplicaRestriçõesCima(this.mx,this.my-1);
+        this.AplicaRestriçõesCima(this.mx-1,this.my-1);
     }
     AplicaRestriçõesDireita(pmx,pmy)
     {
@@ -135,5 +135,23 @@ export default class Sprite
                 }
             }
         }
+    }
+    reposicionar()
+    {        
+        let Invalido = 1;
+        let xa ,ya;
+        while(Invalido ==1)
+        {
+        xa = Math.floor(Math.random() * 12*32) + 32;
+        let mx=Math.floor(xa/this.cena.mapa.TAMANHO);
+        ya = Math.floor(Math.random() * 7*32) + 32;
+        let my=Math.floor(ya/this.cena.mapa.TAMANHO);
+            if(this.cena.mapa.tiles[my][mx]!=1)
+            {
+                Invalido = 0;
+            }
+        }
+        this.x = xa;
+        this.y = ya;
     }
 }
