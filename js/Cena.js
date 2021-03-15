@@ -62,14 +62,18 @@ export default class Cena
         let xa ,ya;
             while(Invalido ==1)
             {
-            xa = Math.floor(Math.random() * 12*32) + 32;
+            xa = Math.floor(Math.random() * 11*32) + 64;
             let mx=Math.floor(xa/this.mapa.TAMANHO);
-            ya = Math.floor(Math.random() * 7*32) + 32;
+            ya = Math.floor(Math.random() * 11*32) + 64;
             let my=Math.floor(ya/this.mapa.TAMANHO);
+                
+            if(mx<15&& my <15)
+            {
                 if(this.mapa.tiles[my][mx]!=1)
                 {
                     Invalido = 0;
                 }
+            }
             }
         let vxa = Math.floor(Math.random() * 11);
         let positivoOuNegativo =Math.floor(Math.random() * 10) +1;
@@ -120,7 +124,6 @@ export default class Cena
                 if(sprA.colidiuCom(sprB))
                 {
                     this.quandoColidir(sprA,sprB)
-                    this.assets.play("boom");
                 }               
             }
         }
@@ -135,6 +138,7 @@ export default class Cena
         {
             this.aRemover.push(b);
         }
+        this.assets.play("boom");
 
     }
     removerSprites()
@@ -152,6 +156,6 @@ export default class Cena
     configuraMapa(mapa)
     {
         this.mapa = mapa;
-        this.mapa.cena=null;
+        this.mapa.cena=this;
     }
 }

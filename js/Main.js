@@ -7,18 +7,21 @@ import  modeloMapa1 from "./maps/mapa1.js";
 
 const assets= new AssetManager(new Mixer(10));
 assets.adicionaImagem("humano","assets/humano.png");
+assets.adicionaImagem("terreno","assets/terrain_atlas.png")
 assets.adicionaAudio("boom","assets/boom.wav")
+assets.adicionaAudio("hurt","assets/hurt.wav")
 
 
 const canvas = document.querySelector("canvas");
-canvas.width = 20*32;
-canvas.height = 10*32;
-
+canvas.width = 15*32;
+canvas.height = 15*32;
 const cena1= new Cena(canvas,assets);
 
-const mapa1 = new Mapa(10,14,32);
+const mapa1 = new Mapa(15,15,32);
 mapa1.carregaMapa(modeloMapa1);
 cena1.configuraMapa(mapa1);
+
+
 
 //const en1 = new Sprite({x:140,y:100,w:20,h:20,vx:-10,color:"red"});
 //cena1.adicionarSprite(pc);

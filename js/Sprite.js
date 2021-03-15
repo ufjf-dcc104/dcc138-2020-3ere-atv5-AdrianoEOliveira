@@ -72,6 +72,7 @@ export default class Sprite
                 {
                 this.vx = 0;
                 this.x=tile.x-tile.w/2-this.w/2-1;
+                this.cena.assets.play("hurt");
                 }
             }
         }
@@ -92,6 +93,7 @@ export default class Sprite
                 {
                 this.vx = 0;
                 this.x=tile.x+tile.w/2+this.w/2+1;
+                this.cena.assets.play("hurt");
                 }
             }
         }
@@ -112,6 +114,7 @@ export default class Sprite
                 {
                 this.vy = 0;
                 this.y=tile.y-tile.h/2-this.h/2-1;
+                this.cena.assets.play("hurt");
                 }
             }
         }
@@ -132,26 +135,39 @@ export default class Sprite
                 {
                 this.vy = 0;
                 this.y=tile.y+tile.h/2+this.h/2+1;
+                this.cena.assets.play("hurt");
                 }
             }
         }
     }
     reposicionar()
-    {        
+    {        //Reposiciona sprite em uma posição aleatoria valida e Muda velocidades
         let Invalido = 1;
         let xa ,ya;
-        while(Invalido ==1)
+        while(Invalido ===1)
         {
-        xa = Math.floor(Math.random() * 12*32) + 32;
+        xa = Math.floor(Math.random() * 11*32) + 64 ;
         let mx=Math.floor(xa/this.cena.mapa.TAMANHO);
-        ya = Math.floor(Math.random() * 7*32) + 32;
+        ya = Math.floor(Math.random() * 11*32) + 64 ;
         let my=Math.floor(ya/this.cena.mapa.TAMANHO);
-            if(this.cena.mapa.tiles[my][mx]!=1)
+            if(mx<15 && my <15)
             {
-                Invalido = 0;
+                if(this.cena.mapa.tiles[my][mx]!=1)
+                {
+                    Invalido = 0;
+                }
             }
         }
         this.x = xa;
         this.y = ya;
+
+        let vxa = Math.floor(Math.random() * 11);
+        let positivoOuNegativo =Math.floor(Math.random() * 10) +1;
+        vxa = vxa * Math.pow(-1,positivoOuNegativo);
+        let vya = Math.floor(Math.random() * 11);
+        positivoOuNegativo =Math.floor(Math.random() * 10) +1;
+        vya = vya * Math.pow(-1,positivoOuNegativo);
+        this.vx=vxa;
+        this.vy = vya;
     }
 }
