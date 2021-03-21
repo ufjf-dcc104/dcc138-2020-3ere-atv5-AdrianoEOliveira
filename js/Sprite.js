@@ -14,6 +14,7 @@ export default class Sprite
         this.mx=0;
         this.my=0;
         this.controlar = controlar;
+        this.tags = new Set();
     }
     desenhar(ctx)
     {

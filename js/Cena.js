@@ -7,15 +7,12 @@ export default class Cena
     constructor(canvas,assets =null){
         this.canvas = canvas;
         this.ctx = canvas.getContext("2d");
-        this.sprites=[];
-        this.aRemover=[];
-        this.t0=0;
-        this.dt=0;
-        this.idAnim = null;
-        this.assets= assets;
+        this.preparar();
+        this.assets = assets;
         this.mapa=null;
-        this.tempo =0;
         this.game=null;
+        this.rodando =true;
+
     }
     desenhar()
     {
@@ -61,7 +58,7 @@ export default class Cena
     {
         let Invalido = 1;
         let xa ,ya;
-            while(Invalido ==1)
+            while(Invalido ===1)
             {
             xa = Math.floor(Math.random() * 11*32) + 64;
             let mx=Math.floor(xa/this.mapa.TAMANHO);
@@ -103,13 +100,17 @@ export default class Cena
         this.checarColisão();
         this.removerSprites();
         this.t0 = t;
+        if(this.rodando){
         this.iniciar();
+        }
     }
     iniciar()
     {
+        this.rodando = true;
         this.idAnim = requestAnimationFrame((t)=>{this.quadro(t)});
     }
     parar(){
+        this.rodando=false;
         cancelAnimationFrame(this.idAnim);
         this.t0=null;
         this.dy=0;
@@ -158,5 +159,15 @@ export default class Cena
     {
         this.mapa = mapa;
         this.mapa.cena=this;
+    }
+    preparar()
+    {
+        this.sprites=[];
+        this.aRemover=[];
+        this.t0=null;
+        this.dt=0;
+        this.idAnim = null;
+        this.tempo =0;
+        this.rodando =true;
     }
 }
