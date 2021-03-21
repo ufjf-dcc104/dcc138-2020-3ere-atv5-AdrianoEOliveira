@@ -33,8 +33,39 @@ cena1.configuraMapa(mapa1);
 
 
 
-//const en1 = new Sprite({x:140,y:100,w:20,h:20,vx:-10,color:"red"});
-//cena1.adicionarSprite(pc);
+const pc = new Sprite({x:140,y:100,w:20,h:20,vx:0,color:"white"});
+pc.controlar = function(dt)
+{
+    if(input.comandos.get("MOVE_ESQUERDA"))
+    {
+        this.vx=-50;
+    }
+    else
+    {
+        if(input.comandos.get("MOVE_DIREITA"))
+        {
+            this.vx=50;
+        }
+        else{
+           this.vx=0;
+        }
+    }
+        if(input.comandos.get("MOVE_CIMA"))
+    {
+        this.vy=-50;
+    }
+    else
+    {
+        if(input.comandos.get("MOVE_BAIXO"))
+        {
+            this.vy=50;
+        }
+        else{
+           this.vy=0;
+        }
+    }
+}
+cena1.adicionarSprite(pc);
 //cena1.adicionarSprite(en1);
 //cena1.adicionarSprite(new Sprite({x:50,y:100,w:20,h:20,vx:-10,color:"red"}));
 

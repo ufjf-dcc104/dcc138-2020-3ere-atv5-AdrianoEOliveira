@@ -24,12 +24,23 @@ export default class Sprite
             this.cena.mapa.TAMANHO,
             this.cena.mapa.TAMANHO);
     }
-    passo(dt)
+    controlar(dt)
     {
+
+    }
+    mover(dt)
+    {        
         this.x = this.x + this.vx*dt;
         this.y = this.y + this.vy*dt;
         this.mx=Math.floor(this.x/this.cena.mapa.TAMANHO);
         this.my=Math.floor(this.y/this.cena.mapa.TAMANHO);
+
+    }
+    passo(dt)
+    {
+        this.controlar(dt);
+        this.mover(dt);
+
     }
     colidiuCom(outro)
     {
