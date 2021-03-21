@@ -1,7 +1,7 @@
 export default class Sprite
 {
     //E responsável por modelar algo que se move na tela
-    constructor({x=100,y=100,w=20,h=20,color="white",vx=0,vy=0}={})
+    constructor({x=100,y=100,w=20,h=20,color="white",vx=0,vy=0,controlar = ()=>{}}={})
     {
         this.x=x;
         this.y=y;
@@ -13,6 +13,7 @@ export default class Sprite
         this.cena=null;
         this.mx=0;
         this.my=0;
+        this.controlar = controlar;
     }
     desenhar(ctx)
     {

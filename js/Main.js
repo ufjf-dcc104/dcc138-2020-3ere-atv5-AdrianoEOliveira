@@ -66,7 +66,14 @@ pc.controlar = function(dt)
     }
 }
 cena1.adicionarSprite(pc);
-//cena1.adicionarSprite(en1);
+function perseguePC(dt)
+{
+    this.vx = 25 * Math.sign(pc.x-this.x);
+    this.vy = 25 * Math.sign(pc.y-this.y);
+
+}
+const en1 = new Sprite({x:400,y:100,w:20,h:20,color:"red",controlar : perseguePC});
+cena1.adicionarSprite(en1);
 //cena1.adicionarSprite(new Sprite({x:50,y:100,w:20,h:20,vx:-10,color:"red"}));
 
 cena1.iniciar();
