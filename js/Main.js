@@ -5,6 +5,7 @@ import Mixer from "./mixer.js";
 import Sprite from "./Sprite.js";
 import  modeloMapa1 from "./maps/mapa1.js";
 import inputManager from "./inputManager.js";
+import Game from "./game.js";
 
 const assets= new AssetManager(new Mixer(10));
 assets.adicionaImagem("humano","assets/humano.png");
@@ -24,9 +25,10 @@ input.configurarTeclado(
     }
 );
 
+const game = new Game(canvas,assets,input);
 
 const cena1= new Cena(canvas,assets);
-
+game.adicionarCena("jogo",cena1);
 const mapa1 = new Mapa(15,15,32);
 mapa1.carregaMapa(modeloMapa1);
 cena1.configuraMapa(mapa1);

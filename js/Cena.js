@@ -15,6 +15,7 @@ export default class Cena
         this.assets= assets;
         this.mapa=null;
         this.tempo =0;
+        this.game=null;
     }
     desenhar()
     {
