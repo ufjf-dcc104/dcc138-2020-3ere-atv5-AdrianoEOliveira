@@ -23,7 +23,9 @@ export default class Game{
     {
         if(this.cenas.has(chave))
         {
+            this.cena.parar();
             this.cena = this.cenas.get(chave);
+            this.cena.iniciar();
         }
     }
     iniciar()
