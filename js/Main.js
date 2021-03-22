@@ -11,6 +11,7 @@ import CenaFim from   "./CenaFim.js";
 const assets= new AssetManager(new Mixer(10));
 assets.adicionaImagem("humano","assets/humano.png");
 assets.adicionaImagem("terreno","assets/terrain_atlas.png")
+assets.adicionaImagem("chest","assets/Chest.png")
 assets.adicionaAudio("boom","assets/boom.wav")
 assets.adicionaAudio("hurt","assets/hurt.wav")
 const input = new inputManager();
@@ -29,11 +30,11 @@ input.configurarTeclado(
 
 const game = new Game(canvas,assets,input);
 
-const cena1= new CenaJogo(canvas,assets);
+const cena1= new CenaJogo(canvas,assets,input);
 
-const carregando= new CenaCarregando(canvas,assets);
+const carregando= new CenaCarregando(canvas,assets,input);
 
-const fim= new CenaFim(canvas,assets);
+const fim= new CenaFim(canvas,assets,input);
 
 game.adicionarCena("carregando",carregando);
 game.adicionarCena("jogo",cena1);

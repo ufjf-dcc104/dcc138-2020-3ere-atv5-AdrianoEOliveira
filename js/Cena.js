@@ -4,7 +4,7 @@ export default class Cena
 {
     /* E responsável por desenhar elementos na tela de uma animação
     */
-    constructor(canvas,assets =null){
+    constructor(canvas,assets,input){
         this.canvas = canvas;
         this.ctx = canvas.getContext("2d");
         this.preparar();
@@ -12,6 +12,8 @@ export default class Cena
         this.mapa=null;
         this.game=null;
         this.rodando =true;
+        this.input = input;
+        this.pontuacao = 0;
 
     }
     desenhar()
@@ -48,10 +50,7 @@ export default class Cena
     }
     MudaEstado()
     {
-        for (const sprite of this.sprites) 
-        {
-            sprite.reposicionar();
-        }
+
         this.criaSprite();
     }
     criaSprite()
@@ -80,6 +79,15 @@ export default class Cena
         positivoOuNegativo =Math.floor(Math.random() * 10) +1;
         vya = vya * Math.pow(-1,positivoOuNegativo);
         const en1 = new Sprite({x:xa,y:ya,w:20,h:20,vx:vxa,vy:vya,color:"red"});
+        en1.tags.add("enemy");
+        const pc = this.sprites[0];
+        function perseguePC(dt)
+        {
+            this.vx = 25 * Math.sign(pc.x-this.x);
+            this.vy = 25 * Math.sign(pc.y-this.y);
+    
+        }
+        en1.controlar = perseguePC;
         this.adicionarSprite(en1);
 
     }

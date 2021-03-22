@@ -1,23 +1,21 @@
 export default class Game{
-    constructor(canvas,assets,input)
+    constructor(canvas, assets,input)
     {
         this.canvas = canvas;
+        this.ctx = canvas.getContext("2d");
         this.assets = assets;
         this.input = input
         this.cenas = new Map();
         this.cena =null;
+        this.pontuacao = 0;
     }
     adicionarCena(chave,cena)
     {
+        cena.game = this;
         this.cenas.set(chave,cena)
-        cena.game =this;
-        cena.canvas =this.canvas;
-        cena.assets = this.assets;
-        cena.input = this.input
         if(this.cena === null)
-        {
+
             this.cena = cena;
-        }
     }
     selecionaCena(chave)
     {

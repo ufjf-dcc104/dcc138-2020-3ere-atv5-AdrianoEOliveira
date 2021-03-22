@@ -75,7 +75,7 @@ export default class Sprite
         if(this.vx>0)
         {
 
-            if(this.cena.mapa.tiles[pmy][pmx]!=0)
+            if(this.cena.mapa.tiles[pmy][pmx]==1)
             {
                 const tile = {x:(pmx*size)+(size/2),
                 y:(pmy*size)+(size/2),
@@ -85,18 +85,39 @@ export default class Sprite
                 {
                 this.vx = 0;
                 this.x=tile.x-tile.w/2-this.w/2-1;
+                if(this.tags.has("pc"))
+                {
                 this.cena.assets.play("hurt");
+                }
+                }
+            }
+                else
+                {
+                    if(this.tags.has("pc"))
+                    {
+                    if(this.cena.mapa.tiles[pmy][pmx]==2)
+                    {
+                        const tile = {x:(pmx*size)+(size/2),
+                            y:(pmy*size)+(size/2),
+                            w:size,
+                            h:size}
+                            if(this.colidiuCom(tile))
+                            {
+                                this.cena.mapa.tiles[pmy][pmx]=0;
+                                this.cena.game.pontuacao++;
+                            }
+                        }
+                    }
                 }
             }
         }
-    }
     AplicaRestriçõesEsquerda(pmx,pmy)
     {
         const size = this.cena.mapa.TAMANHO;
         if(this.vx<0)
         {
 
-            if(this.cena.mapa.tiles[pmy][pmx]!=0)
+            if(this.cena.mapa.tiles[pmy][pmx]==1)
             {
                 const tile = {x:(pmx*size)+(size/2),
                 y:(pmy*size)+(size/2),
@@ -106,18 +127,39 @@ export default class Sprite
                 {
                 this.vx = 0;
                 this.x=tile.x+tile.w/2+this.w/2+1;
+                if(this.tags.has("pc"))
+                {
                 this.cena.assets.play("hurt");
+                }
+                }
+            }
+                else
+                {
+                    if(this.tags.has("pc"))
+                    {
+                    if(this.cena.mapa.tiles[pmy][pmx]==2)
+                    {
+                        const tile = {x:(pmx*size)+(size/2),
+                            y:(pmy*size)+(size/2),
+                            w:size,
+                            h:size}
+                            if(this.colidiuCom(tile))
+                            {
+                                this.cena.mapa.tiles[pmy][pmx]=0;
+                                this.cena.game.pontuacao++;
+                            }
+                        }
+                    }
                 }
             }
         }
-    }
     AplicaRestriçõesBaixo(pmx,pmy)
     {
         const size = this.cena.mapa.TAMANHO;
         if(this.vy>0)
         {
 
-            if(this.cena.mapa.tiles[pmy][pmx]!=0)
+            if(this.cena.mapa.tiles[pmy][pmx]==1)
             {
                 const tile = {x:(pmx*size)+(size/2),
                 y:(pmy*size)+(size/2),
@@ -127,7 +169,30 @@ export default class Sprite
                 {
                 this.vy = 0;
                 this.y=tile.y-tile.h/2-this.h/2-1;
+                if(this.tags.has("pc"))
+                {
                 this.cena.assets.play("hurt");
+                }
+                }
+            }
+            else
+                {
+                    {
+                    if(this.tags.has("pc"))
+                    {
+                        if(this.cena.mapa.tiles[pmy][pmx]==2)
+                        {
+                            const tile = {x:(pmx*size)+(size/2),
+                            y:(pmy*size)+(size/2),
+                            w:size,
+                            h:size}
+                            if(this.colidiuCom(tile))
+                            {
+                                this.cena.mapa.tiles[pmy][pmx]=0;
+                                this.cena.game.pontuacao++;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -138,7 +203,7 @@ export default class Sprite
         if(this.vy<0)
         {
 
-            if(this.cena.mapa.tiles[pmy][pmx]!=0)
+            if(this.cena.mapa.tiles[pmy][pmx]==1)
             {
                 const tile = {x:(pmx*size)+(size/2),
                 y:(pmy*size)+(size/2),
@@ -148,8 +213,29 @@ export default class Sprite
                 {
                 this.vy = 0;
                 this.y=tile.y+tile.h/2+this.h/2+1;
+                if(this.tags.has("pc"))
+                {
                 this.cena.assets.play("hurt");
                 }
+                }
+            }
+            else
+            {
+                if(this.tags.has("pc"))
+                {
+                if(this.cena.mapa.tiles[pmy][pmx]==2)
+                {
+                    const tile = {x:(pmx*size)+(size/2),
+                        y:(pmy*size)+(size/2),
+                        w:size,
+                        h:size}
+                        if(this.colidiuCom(tile))
+                        {
+                            this.cena.mapa.tiles[pmy][pmx]=0;
+                            this.cena.game.pontuacao++;
+                        }
+                }
+            }
             }
         }
     }

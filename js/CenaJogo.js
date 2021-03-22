@@ -20,6 +20,13 @@ export default class CenaJogo extends Cena
         this.assets.play("boom");
         this.game.selecionaCena("fim");
         }
+        else{
+            if(a.tags.has("enemy")&& b.tags.has("enemy"))
+            {
+                this.assets.play("boom");
+            }
+
+        }
     }
     preparar()
     {
@@ -27,18 +34,18 @@ export default class CenaJogo extends Cena
         const mapa1 = new Mapa(15,15,32);
         mapa1.carregaMapa(modeloMapa1);
         this.configuraMapa(mapa1);
-        const game = this;
+        const cena = this;
         const pc = new Sprite({x:140,y:100,w:20,h:20,vx:0,color:"white"});
         pc.tags.add("pc");
         pc.controlar = function(dt)
         {
-            if(game.input.comandos.get("MOVE_ESQUERDA"))
+            if(cena.input.comandos.get("MOVE_ESQUERDA"))
             {
                 this.vx=-50;
             }
             else
             {
-                if(game.input.comandos.get("MOVE_DIREITA"))
+                if(cena.input.comandos.get("MOVE_DIREITA"))
                 {
                     this.vx=50;
                 }
@@ -47,13 +54,13 @@ export default class CenaJogo extends Cena
                     this.vx=0;
                 }
             }
-            if(game.input.comandos.get("MOVE_CIMA"))
+            if(cena.input.comandos.get("MOVE_CIMA"))
             {
             this.vy=-50;
             }
             else
             {
-                if(game.input.comandos.get("MOVE_BAIXO"))
+                if(cena.input.comandos.get("MOVE_BAIXO"))
                 {
                     this.vy=50;
                 }
@@ -64,14 +71,6 @@ export default class CenaJogo extends Cena
             }
         }
         this.adicionarSprite(pc);
-    function perseguePC(dt)
-    {
-        this.vx = 25 * Math.sign(pc.x-this.x);
-        this.vy = 25 * Math.sign(pc.y-this.y);
 
-    }
-    const en1 = new Sprite({x:400,y:100,w:20,h:20,color:"red",controlar : perseguePC});
-    en1.tags.add("enemy");
-    this.adicionarSprite(en1);
     }
 }

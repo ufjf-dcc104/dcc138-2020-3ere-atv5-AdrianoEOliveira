@@ -20,6 +20,8 @@ export default class Mapa
     {
         let img =new Image();
         img = this.cena.assets.Img("terreno");
+        let chest = new Image();
+        chest = this.cena.assets.Img("chest")
         let linha = 21;
         let coluna = 8;
         for (let l = 0; l < this.LINHAS; l++) 
@@ -34,6 +36,12 @@ export default class Mapa
                         ctx.drawImage(img,21 * 32,21 *32,32,32,
                             c*32,l*32,32,32);
                     }
+                    if(this.tiles[l][c]==2)
+                    {
+                        ctx.drawImage(chest,0,0,21,21,
+                            c*32,l*32,22,22);
+                    }
+
                 ctx.strokeRect(c*this.TAMANHO,l*this.TAMANHO,this.TAMANHO,this.TAMANHO);
             }
         }
