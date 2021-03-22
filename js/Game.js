@@ -10,6 +10,7 @@ export default class Game{
         this.pontuacao = 0;
         this.chests = 0;
         this.stars = 0;
+        this.eliminacoes = 0;
     }
     adicionarCena(chave,cena)
     {

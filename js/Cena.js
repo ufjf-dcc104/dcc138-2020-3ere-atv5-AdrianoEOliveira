@@ -99,7 +99,17 @@ export default class Cena
         this.t0 = this.t0 ?? t;
         this.dt = (t-this.t0)/1000;
         this.tempo = this.dt +this.tempo;
-        if(this.tempo > 4)
+        let respawn=4;
+        if(this.game.stars==1)
+        {
+            respawn = 3; 
+        }
+        if(this.game.stars>=2)
+        {
+            respawn = 2;  
+        }
+
+        if(this.tempo > respawn)
         {
             this.MudaEstado();
             this.tempo=0;

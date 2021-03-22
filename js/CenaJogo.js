@@ -26,6 +26,7 @@ export default class CenaJogo extends Cena
             {
                 this.assets.play("boom");
                 this.game.pontuacao++;
+                this.game.eliminacoes++;
             }
 
         }
