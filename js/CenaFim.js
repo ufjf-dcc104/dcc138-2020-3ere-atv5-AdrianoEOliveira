@@ -9,12 +9,14 @@ export default class CenaFim extends Cena
         this.ctx.font ="20px Impact"
         this.ctx.fillStyle = "red";
         this.ctx.textAlign = "center";
-        this.ctx.fillText("Game Over",this.canvas.width/2,this.canvas.height/2);
+        this.ctx.fillText("Fim de Jogo",this.canvas.width/2,this.canvas.height/2-40);
         this.ctx.fillStyle = "yellow";
-        this.ctx.fillText(`Pontuacao :${(this.game.pontuacao)}`,this.canvas.width/2,this.canvas.height/2+40);
+        this.ctx.fillText(`Pontuacao :${(this.game.pontuacao)}`,this.canvas.width/2,this.canvas.height/2);
+        this.ctx.fillText(`Baus :${(this.game.chests)}`,this.canvas.width/2,this.canvas.height/2+40);
+        this.ctx.fillText(`Moedas :${(this.game.stars)}`,this.canvas.width/2,this.canvas.height/2+80);
         if(this.assets.acabou())
         {
-            this.ctx.fillText("Aperte espaço para jogar novamente",this.canvas.width/2,this.canvas.height/2+80);
+            this.ctx.fillText("Aperte espaço para jogar novamente",this.canvas.width/2,this.canvas.height/2+120);
         }
     }
 
@@ -28,6 +30,8 @@ export default class CenaFim extends Cena
             if(this.input.comandos.get("PROXIMA_CENA"))
             {
                 this.game.pontuacao = 0;
+                this.game.chests = 0;
+                this.game.stars = 0;
                 this.game.selecionaCena("jogo");
                 return;
             }
