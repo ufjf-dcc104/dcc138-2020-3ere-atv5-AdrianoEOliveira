@@ -46,6 +46,14 @@ export default class CenaJogo extends Cena
         const cena = this;
         const pc = new Sprite({x:140,y:100,w:20,h:20,vx:0,color:"white"});
         pc.tags.add("pc");
+        //const imagem = new Image();
+        //imagem = this.cena.assets.Img("ship");
+        /*Uncaught TypeError: Cannot read property 'assets' of undefined
+        at CenaJogo.preparar (CenaJogo.js:50)
+        at new Cena (Cena.js:10)
+        at new CenaJogo (CenaJogo.js:7)
+        at Main.js:34
+       */
         pc.controlar = function(dt)
         {
             if(cena.input.comandos.get("MOVE_ESQUERDA"))

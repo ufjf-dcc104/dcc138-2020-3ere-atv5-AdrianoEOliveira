@@ -12,6 +12,7 @@ assets.adicionaImagem("humano","assets/humano.png");
 assets.adicionaImagem("terreno","assets/terrain_atlas.png")
 assets.adicionaImagem("chest","assets/Chest.png")
 assets.adicionaImagem("coin","assets/coin.jpg")
+assets.adicionaImagem("ship","assets/ship.png")
 assets.adicionaAudio("boom","assets/boom.wav")
 assets.adicionaAudio("hurt","assets/hurt.wav")
 const input = new inputManager();
