@@ -8,6 +8,8 @@ export default class Game{
         this.cenas = new Map();
         this.cena =null;
         this.pontuacao = 0;
+        this.chests = 0;
+        this.stars = 0;
     }
     adicionarCena(chave,cena)
     {

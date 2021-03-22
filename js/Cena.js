@@ -4,7 +4,7 @@ export default class Cena
 {
     /* E responsável por desenhar elementos na tela de uma animação
     */
-    constructor(canvas,assets,input){
+    constructor(canvas,assets,input,modelo){
         this.canvas = canvas;
         this.ctx = canvas.getContext("2d");
         this.preparar();
@@ -14,6 +14,7 @@ export default class Cena
         this.rodando =true;
         this.input = input;
         this.pontuacao = 0;
+        this.modelo=modelo;
 
     }
     desenhar()

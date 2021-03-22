@@ -105,7 +105,21 @@ export default class Sprite
                             {
                                 this.cena.mapa.tiles[pmy][pmx]=0;
                                 this.cena.game.pontuacao++;
+                                this.cena.game.chests++;
                             }
+                        }
+                    }
+                    if(this.cena.mapa.tiles[pmy][pmx]==3)
+                    {
+                        const tile = {x:(pmx*size)+(size/2),
+                        y:(pmy*size)+(size/2),
+                        w:size,
+                        h:size}
+                        if(this.colidiuCom(tile))
+                        {
+                            this.cena.game.pontuacao = this.cena.game.pontuacao +2;
+                            this.cena.game.stars++;
+                            this.cena.game.selecionaCena("jogo2");
                         }
                     }
                 }
@@ -147,6 +161,21 @@ export default class Sprite
                             {
                                 this.cena.mapa.tiles[pmy][pmx]=0;
                                 this.cena.game.pontuacao++;
+                                this.cena.game.chests++;
+                            }
+                        }
+                        if(this.cena.mapa.tiles[pmy][pmx]==3)
+                        {
+                            const tile = {x:(pmx*size)+(size/2),
+                            y:(pmy*size)+(size/2),
+                            w:size,
+                            h:size}
+                            if(this.colidiuCom(tile))
+                            {
+                                this.cena.game.pontuacao = this.cena.game.pontuacao +2;
+                                this.cena.game.stars++
+                                this.cena.game.selecionaCena("jogo2");
+
                             }
                         }
                     }
@@ -190,6 +219,20 @@ export default class Sprite
                             {
                                 this.cena.mapa.tiles[pmy][pmx]=0;
                                 this.cena.game.pontuacao++;
+                                this.cena.game.chests++;
+                            }
+                        }
+                        if(this.cena.mapa.tiles[pmy][pmx]==3)
+                        {
+                            const tile = {x:(pmx*size)+(size/2),
+                            y:(pmy*size)+(size/2),
+                            w:size,
+                            h:size}
+                            if(this.colidiuCom(tile))
+                            {
+                                this.cena.game.pontuacao = this.cena.game.pontuacao +2;
+                                this.cena.game.stars++
+                                this.cena.game.selecionaCena("jogo2");
                             }
                         }
                     }
@@ -223,22 +266,37 @@ export default class Sprite
             {
                 if(this.tags.has("pc"))
                 {
-                if(this.cena.mapa.tiles[pmy][pmx]==2)
-                {
-                    const tile = {x:(pmx*size)+(size/2),
+                    if(this.cena.mapa.tiles[pmy][pmx]==2)
+                    {
+                        const tile = {x:(pmx*size)+(size/2),
+                            y:(pmy*size)+(size/2),
+                            w:size,
+                            h:size}
+                            if(this.colidiuCom(tile))
+                            {
+                                this.cena.mapa.tiles[pmy][pmx]=0;
+                                this.cena.game.pontuacao++;
+                                this.cena.game.chests++;
+                            }
+                    }
+                    if(this.cena.mapa.tiles[pmy][pmx]==3)
+                    {
+                        const tile = {x:(pmx*size)+(size/2),
                         y:(pmy*size)+(size/2),
                         w:size,
                         h:size}
                         if(this.colidiuCom(tile))
                         {
-                            this.cena.mapa.tiles[pmy][pmx]=0;
-                            this.cena.game.pontuacao++;
+                            this.cena.game.pontuacao = this.cena.game.pontuacao +2;
+                            this.cena.game.stars++
+                            this.cena.game.selecionaCena("jogo2");
+                            
                         }
+                    }
                 }
             }
             }
         }
-    }
     reposicionar()
     {        //Reposiciona sprite em uma posição aleatoria valida e Muda velocidades
         let Invalido = 1;

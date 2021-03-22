@@ -1,6 +1,7 @@
 import Cena from "./Cena.js";
 import Mapa from "./mapa.js";
 import  modeloMapa1 from "./maps/mapa1.js";
+import  modeloMapa2 from "./maps/mapa2.js";
 import Sprite from "./Sprite.js";
 
 export default class CenaJogo extends Cena
@@ -24,6 +25,7 @@ export default class CenaJogo extends Cena
             if(a.tags.has("enemy")&& b.tags.has("enemy"))
             {
                 this.assets.play("boom");
+                this.game.pontuacao++;
             }
 
         }
@@ -32,7 +34,14 @@ export default class CenaJogo extends Cena
     {
         super.preparar();
         const mapa1 = new Mapa(15,15,32);
+        if(this.modelo==1)
+        {
         mapa1.carregaMapa(modeloMapa1);
+        }
+        else
+        {
+            mapa1.carregaMapa(modeloMapa2);
+        }
         this.configuraMapa(mapa1);
         const cena = this;
         const pc = new Sprite({x:140,y:100,w:20,h:20,vx:0,color:"white"});
