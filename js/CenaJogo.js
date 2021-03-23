@@ -1,5 +1,5 @@
 import Cena from "./Cena.js";
-import Mapa from "./mapa.js";
+import Mapa from "./Mapa.js";
 import  modeloMapa1 from "./maps/mapa1.js";
 import  modeloMapa2 from "./maps/mapa2.js";
 import Sprite from "./Sprite.js";
